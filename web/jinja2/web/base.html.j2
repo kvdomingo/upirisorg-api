@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
@@ -22,16 +23,37 @@
     <meta property="twitter:card" content="summary" />
 
     <style>
+        html {
+            font-size: 1rem;
+        }
+
+        @include media-breakpoint-up(sm) {
+            html {
+                font-size: 1.2rem;
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            html {
+                font-size: 1.4rem;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            html {
+                font-size: 1.6rem;
+            }
+        }
+
         body {
-            font-family: 'Futura', sans-serif;
-            font-weight: lighter;
-            font-style: italic;
+            font-family: 'Futura Bk BT', sans-serif;
         }
     </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top navbar-light">
-        <a class="navbar-brand" href="{{ url('index') }}">
+    <nav class="navbar navbar-expand-lg navbar-light" style="box-shadow: none; z-index: 1;">
+        <a class="navbar-brand" href="{{ url('home') }}">
             <img src="{{ static('web/media/private/logo.png') }}" height="100" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false", aria-label="Toggle navigation">
@@ -40,8 +62,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 {% for item in nav_items %}
-                    <li class="nav-item {{ 'active' if active_page.lower() == item }}">
-                        <a class="nav-link" href="#">{{ item.upper() }}</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url(item.lower()) }}">{{ item.upper() }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -49,17 +71,43 @@
     </nav>
     {% block body %}{% endblock %}
 
-    <footer class="container-fluid" style="padding-bottom: 0; margin: 20px auto;">
-        <div class="row">
-            <div class="col">
-                <p>&copy; {{ now.year }} UP Iris Photography</p>
+    <footer class="page-footer font-small blue darken-4 pt-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-8 mt-md-0 mt-3">
+                    <h4 class="text-uppercase">UP Iris Photography</h4>
+                    <h5>#BeIRISistible</h5>
+                    <p>Made by <a href="https://kdphotography.herokuapp.com" target="_blank">Kenneth V Domingo</a></p>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3" />
+                <div class="col mb-md-0 mb-3">
+                    <h5 class="text-uppercase">About</h5>
+                    <ul class="list-unstyled">
+                        <li>Our Mission</li>
+                        <li>Our Vision</li>
+                    </ul>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3" />
+                <div class="col mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://www.facebook.com/upiris" target="_blank"><i class="fab fa-facebook-square"></i> /upiris</a>
+                        </li>
+                        <li>
+                            <a href="https://www.twitter.com/upirisofficial" target="_blank"><i class="fab fa-twitter"></i> @upirisofficial</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/upirisofficial" target="_blank"><i class="fab fa-instagram"></i> @upirisofficial</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col text-right">
-                <a href="https://www.instagram.com/arockentothemoon" target="_blank"><big class="fab fa-instagram"></big></a>
-                <a href="https://www.instagram.com/arockentothetones" target="_blank"><big class="fab fa-instagram"></big></a>
-                <a href="https://www.pinterest.ph/arocKENtothmoon" target="_blank"><big class="fab fa-pinterest"></big></a>
-                <a href="https://www.facebook.com/KennethDomingoPhotography" target="_blank"><big class="fab fa-facebook-square"></big></a>
-            </div>
+        </div>
+        <div class="footer-copyright text-center py-3">
+            <p class="text-uppercase my-0">
+                &copy; {{ now.year }} UP Iris
+            </p>
         </div>
     </footer>
 </body>
