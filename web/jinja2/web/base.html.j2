@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+
+    <title>{% block title %}{% endblock %} | UP Iris Photography</title>
+    <meta name="description" content="UP Iris is a university-wide photography organization based in the College of Fine Arts, University of the Philippines, Diliman." />
+    <meta property="og:title" content="UP Iris Photography" />
+    <meta property="og:url" content="http://upiris.herokuapp.com" />
+    <meta name="og:description" content="UP Iris is a university-wide photography organization based in the College of Fine Arts, University of the Philippines, Diliman." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="twitter:card" content="summary" />
+
+    <style>
+        body {
+            font-family: 'Futura', sans-serif;
+            font-weight: lighter;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light">
+        <a class="navbar-brand" href="{{ url('index') }}">
+            <img src="{{ static('web/media/private/logo.png') }}" height="100" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false", aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                {% for item in nav_items %}
+                    <li class="nav-item {{ 'active' if active_page.lower() == item }}">
+                        <a class="nav-link" href="#">{{ item.upper() }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+
+    <footer class="container-fluid" style="padding-bottom: 0; margin: 20px auto;">
+        <div class="row">
+            <div class="col">
+                <p>&copy; {{ now.year }} UP Iris Photography</p>
+            </div>
+            <div class="col text-right">
+                <a href="https://www.instagram.com/arockentothemoon" target="_blank"><big class="fab fa-instagram"></big></a>
+                <a href="https://www.instagram.com/arockentothetones" target="_blank"><big class="fab fa-instagram"></big></a>
+                <a href="https://www.pinterest.ph/arocKENtothmoon" target="_blank"><big class="fab fa-pinterest"></big></a>
+                <a href="https://www.facebook.com/KennethDomingoPhotography" target="_blank"><big class="fab fa-facebook-square"></big></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
