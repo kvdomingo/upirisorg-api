@@ -1,0 +1,14 @@
+language: python
+python:
+    - '3.6'
+before_install:
+    - pip install -U pip
+install:
+    - pip install -r requirements.txt
+script:
+    python manage.py test
+deploy:
+    provider: heroku
+    api_key:
+        secure: "GaJ7YBa2mgGZXXH8cXmIPyW8P0KhxEQoE5Ct9mZ5rUElrzI9/4fHZJLXXrjJInDMwKeBdV3/ok/Bl0pzHTKUQwbE7DRwUdUdLykVk92dW3X37CbjU+7JrIL9O4CjzgJ9WiHVrzj7dN0Jo0aC/+W7BPa6PCP1Z6T64i6neK3BfUqWLESmis/g65ktZtSnxCJqcdK52b6bkMnFQLvpTjHC758+4R/SQuVQ4uxUDlwkJ4zTSfV2vVwfG9wcbYKLboop0uAHut17wYGTL2kjRcvPNpABT0FZe3HqbN7llUq+zXf3o4gbMOeNC5r8c7rPIY1N6mJkBWJMAXOczbwR5j09PC/L3VV+m4KeDCj8k/unXG+dPzA7h1qfnSS8QdEqVu3+o+6m/hGwjinbP5raPxMqXwIA4t0DVj3ch9S/LFERbZrwHcTXCFjqfuLpfI/HXokFt5RjKEr3wgnmlMwrGlFmGfRzoXN0F36UiVqae5g3DJNEkClh6au4VVYjNwC7yfvDXT+QnpJ4RgZtVMqg0Ukwl31/NkF8QpKRGMO6sreoNPwYO7JnkQLwAqeiZydjDgtnBnuE83Jf7CVEJq8/CZQFfaFwgcpC0iug0gI4A0+fFi45d/u0hQB1iG+tJAu62npnDj3CRFBR39PDb3Je4IY4FHx+TdNwkwwvyIRcX7tGRnc="
+    app: iriswebdev
