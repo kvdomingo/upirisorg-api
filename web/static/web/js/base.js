@@ -19,4 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
     }).toHtml();
     $('.cl').first().html(img_tag);
+
+    favicon = cl.url(`${img_dir}/logo.png`, {
+        secure: true,
+        transformation: [
+            {
+                crop: 'thumb',
+                gravity: 'north',
+                width: 32,
+                height: 32,
+                dpr: 'auto',
+            },
+        ],
+    });
+    $("link[rel='shortcut icon']").attr("href", favicon);
 });
