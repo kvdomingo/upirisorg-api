@@ -1,4 +1,6 @@
 asgiref==3.2.5
+certifi==2019.11.28
+cloudinary==1.20.0
 dj-database-url==0.5.0
 Django==3.0.4
 django-classy-tags==1.0.0
@@ -37,5 +39,6 @@ six==1.14.0
 sqlparse==0.3.1
 tzlocal==2.0.0
 Unidecode==1.1.1
+urllib3==1.25.8
 webencodings==0.5.1
 whitenoise==5.0.1
