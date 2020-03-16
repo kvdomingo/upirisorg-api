@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
 import jinja2
 from dotenv import load_dotenv
 
@@ -29,6 +28,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.environ['DEBUG']))
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = []
 
@@ -136,4 +136,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 if bool(int(os.environ['ON_HEROKU'])):
+    import django_heroku
     django_heroku.settings(locals())
