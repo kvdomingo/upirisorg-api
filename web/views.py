@@ -1,3 +1,6 @@
+import os
+import upirisorg.settings
+from cloudinary import CloudinaryImage
 from django.shortcuts import render
 from django.http import HttpResponse
 

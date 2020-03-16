@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import jinja2
+import cloudinary
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -132,6 +133,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# Cloudinary settings
+cloudinary.config(
+    cloud_name=os.environ['CLOUDINARY_CLOUD_NAME'],
+    api_key=os.environ['CLOUDINARY_API_KEY'],
+    api_secret=os.environ['CLOUDINARY_API_SECRET']
+)
 
 
 # Static files (CSS, JavaScript, Images)
