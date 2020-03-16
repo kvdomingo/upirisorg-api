@@ -22,11 +22,18 @@ html {
 
 body {
     font-family: 'Futura Bk BT', sans-serif;
+    opacity: 1;
+    transition: 0.5s opacity;
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: 0.5s opacity;
 }
 
 .cover-photo {
-    background-size: cover;
-    background-position-y: 50%;
     background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: cover;
     box-shadow: none;
 }

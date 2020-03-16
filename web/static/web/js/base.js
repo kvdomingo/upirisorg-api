@@ -8,6 +8,15 @@ var cl = new cloudinary.Cloudinary({
 const img_dir = "upirisorg/web/static/web/media/private";
 
 document.addEventListener("DOMContentLoaded", () => {
+    $("body").removeClass("fade-out");
+    $("a").each(function() {
+        $(this).on('click', function() {
+            if ($(this)[0].hasAttribute("href")) {
+                $('body').addClass('fade-out');
+            }
+        });
+    });
+
     img_tag = cl.imageTag(`${img_dir}/logo.png`, {
         secure: true,
         transformation: [
