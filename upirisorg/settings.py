@@ -30,7 +30,11 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = bool(int(os.environ['DEBUG']))
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'iriswebdev.herokuapp.com',
+    'upiris.herokuapp.com',
+]
 
 
 # Application definition
