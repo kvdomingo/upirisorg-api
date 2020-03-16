@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 transformation: [
                     {
                         crop: 'scale',
-                        width: 768,
+                        width: 720,
                         dpr: 'auto',
                     },
                 ],
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 transformation: [
                     {
                         crop: 'scale',
-                        width: 1080,
+                        width: 1920,
                         dpr: 'auto',
                     },
                 ],
