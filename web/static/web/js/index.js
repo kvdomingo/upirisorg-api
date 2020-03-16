@@ -14,20 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $('.card-image').attr("style", `background-image: url('${img_url}');`).addClass('cover-photo');
 
     $('div.cl').each(function(i, v) {
-        if (i + 1 !== 3) {
-            img_tag = cl.imageTag(`${img_dir}/index-block${i + 1}.jpg`, {
-                secure: true,
-                transformation: [
-                    {
-                        crop: 'scale',
-                        width: 720,
-                        dpr: 'auto',
-                    },
-                ],
-            }).toHtml();
-            var max_width = 90;
-        } else {
-            img_tag = cl.imageTag(`${img_dir}/index-block${i+1}.jpg`, {
+        img_url = cl.url(`${img_dir}/index-block${i+1}.jpg`, {
                 secure: true,
                 transformation: [
                     {
@@ -36,13 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         dpr: 'auto',
                     },
                 ],
-            }).toHtml();
-            var max_width = 100;
-        }
-        $(this).html(img_tag);
-        $('img').attr("style", `
-            max-width: ${max_width}%;
-            height: auto;
-        `);
+            });
+        $(this).find('img').attr("src", img_url);
     });
 });
