@@ -36,12 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
         transformation: [
             {
                 crop: 'thumb',
-                height: 150,
+                width: 720,
                 dpr: 'auto',
             },
         ],
     });
     $("meta[property='og:image']").attr("content", card_img);
+    $("meta[name='twitter:image']").attr("content", card_img);
 
     img_tag = cl.imageTag(`${img_dir}/logo.png`, {
         secure: true,
