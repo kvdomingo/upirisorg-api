@@ -10,14 +10,19 @@ from datetime import datetime
 
 ASSET_DIR = os.environ['CLOUDINARY_ASSET_LOCATION']
 
-favicon = CloudinaryImage(f'{ASSET_DIR}/logo.png').build_url(
+favicon = CloudinaryImage(f'{ASSET_DIR}/private/logo.png').build_url(
     crop='thumb',
     gravity='north',
     width=32,
     height=32,
     dpr='auto'
 )
-graph_image = CloudinaryImage(f'{ASSET_DIR}/logo.png').build_url(
+nav_logo = CloudinaryImage(f'{ASSET_DIR}/private/logo.png').build_url(
+    crop='scale',
+    width=512,
+    dpr='auto'
+)
+graph_image = CloudinaryImage(f'{ASSET_DIR}/private/logo.png').build_url(
     crop='thumb',
     width=720,
     dpr='auto'
@@ -40,5 +45,6 @@ def environment(**options):
         ],
         'favicon': favicon,
         'graph_image': graph_image,
+        'nav_logo': nav_logo,
     })
     return env

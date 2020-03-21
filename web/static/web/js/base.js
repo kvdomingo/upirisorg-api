@@ -15,16 +15,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-
-    img_tag = cl.imageTag(`${img_dir}/logo.png`, {
-        secure: true,
-        transformation: [
-            {
-                crop: 'scale',
-                width: 100,
-                dpr: 'auto',
-            },
-        ],
-    }).toHtml();
-    $('.cl').first().html(img_tag);
 });

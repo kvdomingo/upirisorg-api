@@ -1,0 +1,35 @@
+{% extends 'web/base.html.j2' %}
+
+{% block title %}
+    Members
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid my-4">
+    <h1 class="h1 h1-responsive mb-5 text-center text-uppercase">
+        Executive Committee
+    </h1>
+    <div class="row row-cols-1 row-cols-md-4">
+        {% for pic, name, position in ec_data %}
+            <div class="col mb-4 d-flex align-items-stretch">
+                <div class="card">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="{{ pic }}" />
+                        <a href="#">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ name }}</h4>
+                        <p class="card-text">
+                            <b>{{ position }}</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
