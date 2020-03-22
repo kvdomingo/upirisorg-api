@@ -9,8 +9,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 data = read_csv('web/static/web/data/upiris1920.csv', encoding='latin-1', dtype=str)
-if 'id' in data.keys():
-    data = data.drop('id', 1)
 data = data.replace(NaN, '')
 data['year'] = data['year'].replace('', None)
 data['birthday'] = data['birthday'].replace('', None)
