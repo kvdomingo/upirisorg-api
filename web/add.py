@@ -15,9 +15,5 @@ data = data.replace(NaN, '')
 data['year'] = data['year'].replace('', None)
 data['birthday'] = data['birthday'].replace('', None)
 data['contact_number'] = data['contact_number'].replace('', None)
-for i, day in enumerate(data['birthday']):
-    if day == '':
-        continue
-    data['birthday'][i] = datetime.strptime(day, '%m/%d/%y')
 for i, d in data.iterrows():
     _, created = Member.objects.get_or_create(**dict(d))
