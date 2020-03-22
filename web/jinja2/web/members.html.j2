@@ -6,30 +6,95 @@
 
 {% block body %}
 
-<div class="container-fluid my-4">
+<script src="{{ static('web/js/members.js') }}"></script>
+
+<div class="card card-image">
+    <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+        <div class="py-5">
+            <h2 class="card-title h2 my-4 py-2">Members</h2>
+            <div class="container">
+                <p class="mb-4 pb-2 px-md-5 mx-md-5">{{ lipsum(1, False, 50, 51) }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <hr class="clearfix w-100 my-5" />
+</div>
+
+<div class="container-fluid my-5">
+
     <h1 class="h1 h1-responsive mb-5 text-center text-uppercase">
         Executive Committee
     </h1>
-    <div class="row row-cols-1 row-cols-md-4">
-        {% for pic, name, position in ec_data %}
+    <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">
+        {% for data, position in ec_data %}
             <div class="col mb-4 d-flex align-items-stretch">
                 <div class="card">
                     <div class="view overlay">
-                        <img class="card-img-top" src="{{ pic }}" />
+                        <img class="card-img-top" src="{{ data.picture_url }}" />
                         <a href="#">
                             <div class="mask rgba-white-slight"></div>
                         </a>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title">{{ name }}</h4>
+                        <h4 class="card-title h4 h4-responsive">{{ data.first_name + ' ' + data.last_name }}</h4>
                         <p class="card-text">
-                            <b>{{ position }}</b>
+                            <b>{{ position }}</b><br />
+                            {% if data.course != '' %}
+                                {% if data.year != None %}
+                                    {{ data.year|string + ' - ' + data.course }}
+                                {% else %}
+                                    {{ data.course }}
+                                {% endif %}
+                            {% endif %}
                         </p>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
+
+    {% set committees = [
+        ('Externals', exte_data),
+        ('Internals', inte_data),
+        ('Promos', promos_data),
+        ('Logistics', log_data),
+        ('Finance', fin_data)
+    ] %}
+    {% for committee, query in committees %}
+        <hr class="clearfix w-100 my-5" />
+        <h1 class="h1 h1-responsive my-5 text-center text-uppercase">
+            {{ committee }} Committee
+        </h1>
+        <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">
+            {% for data in query %}
+                <div class="col mb-4 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="view overlay">
+                            <img class="card-img-top" src="{{ data.picture_url }}" />
+                            <a href="#">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title h4 h4-responsive">{{ data.first_name + ' ' + data.last_name }}</h4>
+                            <p class="card-text">
+                                {% if data.course != '' %}
+                                    {% if data.year != None %}
+                                        {{ data.year|string + ' - ' + data.course }}
+                                    {% else %}
+                                        {{ data.course }}
+                                    {% endif %}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
 </div>
 
 {% endblock %}

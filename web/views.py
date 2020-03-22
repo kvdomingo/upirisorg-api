@@ -1,8 +1,24 @@
 import os
-import upirisorg.settings
+from upirisorg import settings
 from cloudinary import CloudinaryImage
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.conf import settings
+from .models import *
+
+
+ASSET_DIR = settings.ASSET_DIR
+
+def getImageCloudUrl(query):
+    for data in query:
+        data.picture_url = CloudinaryImage(f'{ASSET_DIR}/members/{data.picture_url}.jpg').build_url(
+            aspect_ratio=0.8,
+            crop='fill',
+            gravity='face',
+            width=512,
+            dpr='auto'
+        )
+    return query
 
 
 def home(request):
@@ -13,36 +29,38 @@ def home(request):
 
 
 def members(request):
-    ASSET_DIR = os.environ['CLOUDINARY_ASSET_LOCATION']
-    ec_files = ['10', '06', '21', '20', '05', '16', '12']
-    ec_pics = [CloudinaryImage(f'{ASSET_DIR}/members/{n}.jpg').build_url(
-        crop='thumb',
-        width=512,
-        dpr='auto'
-    ) for n in ec_files]
-    ec_names = [
-        'Brianna Samson',
-        'Hannah Eunice Obrique',
-        'Jan Paul Martinez',
-        'Nathalie Sanga',
-        'Kenneth Domingo',
-        'Christopher John de Castro',
-        'Bryan Gutierrez',
-    ]
+    ec_id = [18, 36, 35, 15, 8, 5, 27]
+    ec_data = getImageCloudUrl([Member.objects.get(pk=i) for i in ec_id])
     ec_positions = [
         'President',
-        'Secretary-General',
         'Vice President for External Affairs',
         'Vice President for Internal Affairs',
+        'Secretary-General',
         'Executive Officer for Promotions and Documentation',
         'Executive Officer for Logistics',
         'Chancellor of the Exchequer',
     ]
+
+    exte_data = getImageCloudUrl(Member.objects.filter(committee='E'))
+    inte_data = getImageCloudUrl(Member.objects.filter(committee='I'))
+    promos_data = getImageCloudUrl(Member.objects.filter(committee='P'))
+    log_data = getImageCloudUrl(Member.objects.filter(committee='L'))
+    fin_data = getImageCloudUrl(Member.objects.filter(committee='F'))
+
     context = {
         'active_page': 'members',
-        'ec_data': zip(ec_pics, ec_names, ec_positions),
+        'ec_data': zip(ec_data, ec_positions),
+        'exte_data': exte_data,
+        'inte_data': inte_data,
+        'promos_data': promos_data,
+        'log_data': log_data,
+        'fin_data': fin_data,
     }
     return render(request, 'web/members.html.j2', context)
+
+
+def member(request, mem_id):
+    pass
 
 
 def construction(request):

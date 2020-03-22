@@ -1,5 +1,4 @@
 import os
-import upirisorg.settings
 from cloudinary import CloudinaryImage
 from django.templatetags.static import static
 from django.urls import reverse
@@ -8,7 +7,7 @@ from jinja2 import Environment
 from datetime import datetime
 
 
-ASSET_DIR = os.environ['CLOUDINARY_ASSET_LOCATION']
+ASSET_DIR = settings.ASSET_DIR
 
 favicon = CloudinaryImage(f'{ASSET_DIR}/private/logo.png').build_url(
     crop='thumb',
