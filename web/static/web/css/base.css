@@ -22,9 +22,25 @@ html {
 }
 
 body {
-    font-family: 'Futura Bk BT', sans-serif;
+    font-family: 'Futura Book', sans-serif;
     opacity: 1;
     transition: 0.5s opacity;
+}
+
+b {
+    font-family: 'Futura Medium', sans-serif;
+}
+
+i {
+    font-family: 'Futura Book Italic', sans-serif;
+}
+
+b i {
+    font-family: 'Futura Medium Italic', sans-serif;
+}
+
+i b {
+    font-family: 'Futura Medium Italic', sans-serif;
 }
 
 body.fade-out {

@@ -18,6 +18,7 @@ def getImageCloudUrl(query):
             width=512,
             dpr='auto'
         )
+        data.href = (''.join([n[0] for n in data.first_name.split()]) + data.last_name.replace(' ', '')).lower() + '-' + str(data.id)
     return query
 
 
@@ -26,6 +27,13 @@ def home(request):
         'active_page': 'home',
     }
     return render(request, 'web/index.html.j2', context)
+
+
+def about(request):
+    context = {
+        'active_page': 'about',
+    }
+    return render(request, 'web/about.html.j2', context)
 
 
 def members(request):
@@ -59,8 +67,14 @@ def members(request):
     return render(request, 'web/members.html.j2', context)
 
 
-def member(request, mem_id):
-    pass
+def member(request, mem_href):
+    pk = mem_href.split('-')[-1]
+    data = getImageCloudUrl([Member.objects.get(pk=pk)])[0]
+    context = {
+     'active_page': 'members',
+     'data': data,
+    }
+    return render(request, 'web/member.html.j2', context)
 
 
 def construction(request):

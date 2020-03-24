@@ -10,10 +10,8 @@ from datetime import datetime
 ASSET_DIR = settings.ASSET_DIR
 
 favicon = CloudinaryImage(f'{ASSET_DIR}/private/logo.png').build_url(
-    crop='thumb',
-    gravity='north',
+    crop='scale',
     width=32,
-    height=32,
     dpr='auto'
 )
 nav_logo = CloudinaryImage(f'{ASSET_DIR}/private/logo.png').build_url(

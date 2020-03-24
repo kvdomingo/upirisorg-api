@@ -15,4 +15,4 @@ data['birthday'] = data['birthday'].replace('', None)
 data['contact_number'] = data['contact_number'].replace('', None)
 for i, d in data.iterrows():
     _, created = Member.objects.get_or_create(**dict(d))
-    print(f'Added {data['last_name'], data['first_name']}')
+    print(f"Added {d['last_name']}, {d['first_name']}")

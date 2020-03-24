@@ -11,10 +11,7 @@
 <div class="card card-image">
     <div class="text-white text-center rgba-stylish-strong py-5 px-4">
         <div class="py-5">
-            <h2 class="card-title h2 my-4 py-2">Members</h2>
-            <div class="container">
-                <p class="mb-4 pb-2 px-md-5 mx-md-5">{{ lipsum(1, False, 50, 51) }}</p>
-            </div>
+            <h2 class="card-title h1 h1-responsive my-4 py-2 text-uppercase">Members</h2>
         </div>
     </div>
 </div>
@@ -34,7 +31,7 @@
                 <div class="card">
                     <div class="view overlay">
                         <img class="card-img-top" src="{{ data.picture_url }}" />
-                        <a href="#">
+                        <a href="{{ url('member', args=(data.href,)) }}">
                             <div class="mask rgba-white-slight"></div>
                         </a>
                     </div>
@@ -74,7 +71,7 @@
                     <div class="card">
                         <div class="view overlay">
                             <img class="card-img-top" src="{{ data.picture_url }}" />
-                            <a href="#">
+                            <a href="{{ url('member', args=(data.href,)) }}">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>
