@@ -6,13 +6,16 @@
 
 {% block body %}
 
+<link rel="stylesheet" href="{{ static('web/css/member.css') }}" />
+<script src="{{ static('web/js/member.js') }}"></script>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 col-sm-12">
             <a href="{{ url('members') }}" class="btn indigo text-light btn-sm">
                 <i class="material-icons left">keyboard_arrow_left</i></a>
             <div class="my-4 d-flex align-items-stretch">
-                <div class="card">
+                <div class="card" style="position: sticky; top: 0;">
                     <div class="view overlay">
                         <img class="card-img-top" src="{{ data.picture_url }}" />
                         <a href="{{ url('member', args=(data.href,)) }}">
@@ -45,6 +48,11 @@
                                         <a href="https://www.instagram.com/{{ data.instagram }}" target="_blank"><i class="fab fa-instagram"></i> @{{ data.instagram }}</a>
                                     </li>
                                 {% endif %}
+                                {% if data.website|length %}
+                                    <li>
+                                        <a href="{{ data.website }}" target="_blank"><i class="fas fa-globe"></i> {{ data.first_name + ' ' + data.last_name}} Photography</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </p>
                     </div>
@@ -52,8 +60,17 @@
             </div>
         </div>
 
-        <div class="col-md-9 col-sm-12 pl-md-5">
-            <h1 class="h1 h1-responsive">Your pictures go here</h1>
+        <div class="col-md-9 col-sm-12 pl-md-5 mb-5">
+            {% if images|length %}
+                <div class="grid">
+                    <div class="grid-sizer"></div>
+                    {% for image in images %}
+                        <div class="grid-item cl">
+                            <img src="{{ image }}" />
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

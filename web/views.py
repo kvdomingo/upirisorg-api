@@ -1,6 +1,7 @@
 import os
 from upirisorg import settings
 from cloudinary import CloudinaryImage
+from cloudinary.api import resources
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
@@ -70,9 +71,17 @@ def members(request):
 def member(request, mem_href):
     pk = mem_href.split('-')[-1]
     data = getImageCloudUrl([Member.objects.get(pk=pk)])[0]
+    images = resources(prefix=f'{ASSET_DIR}/member/{mem_href}', type='upload', max_results=500)['resources']
+    images = [i['public_id'] for i in images][::-1]
+    images = [CloudinaryImage(i).build_url(
+        crop='scale',
+        dpr='auto',
+        width=512
+    ) for i in images]
     context = {
      'active_page': 'members',
      'data': data,
+     'images': images,
     }
     return render(request, 'web/member.html.j2', context)
 
