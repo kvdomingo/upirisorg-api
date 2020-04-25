@@ -34,10 +34,6 @@ class WebTestCase(StaticLiveServerTestCase):
         self.selenium.get(f'{self.live_server_url}/about')
         percySnapshot(browser=self.selenium, name='about', widths=PERCY_BS_WIDTHS)
 
-    def test_about_view(self):
-        self.selenium.get(f'{self.live_server_url}/members')
-        percySnapshot(browser=self.selenium, name='members', widths=PERCY_BS_WIDTHS)
-
     def test_alumni_view(self):
         self.selenium.get(f'{self.live_server_url}/alumni')
         percySnapshot(browser=self.selenium, name='alumni', widths=PERCY_BS_WIDTHS)
