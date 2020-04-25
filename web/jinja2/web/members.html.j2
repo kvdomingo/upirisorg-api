@@ -31,7 +31,7 @@
                 <div class="card">
                     <div class="view overlay">
                         <img class="card-img-top" src="{{ data.picture_url }}" />
-                        <a href="{{ url('member', args=(data.href,)) }}">
+                        <a href="{{ url('member', args=(data.slug,)) }}">
                             <div class="mask rgba-white-slight"></div>
                         </a>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="card">
                         <div class="view overlay">
                             <img class="card-img-top" src="{{ data.picture_url }}" />
-                            <a href="{{ url('member', args=(data.href,)) }}">
+                            <a href="{{ url('member', args=(data.slug,)) }}">
                                 <div class="mask rgba-white-slight"></div>
                             </a>
                         </div>

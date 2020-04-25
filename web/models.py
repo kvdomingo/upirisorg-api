@@ -5,6 +5,7 @@ class Member(models.Model):
     first_name = models.CharField(max_length=64)
     middle_name = models.CharField(max_length=64, blank=True)
     last_name = models.CharField(max_length=64)
+    slug = models.SlugField(max_length=256, unique=True)
     personal_email = models.EmailField()
     up_email = models.EmailField(blank=True)
     contact_number = models.BigIntegerField(blank=True, null=True)
@@ -58,6 +59,10 @@ class Member(models.Model):
             ('A', 'Alumni'),
         ]
     )
+
+    @property
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
         if self.up_email != '':

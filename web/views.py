@@ -16,7 +16,8 @@ def getImageCloudUrl(query):
             crop='fill',
             gravity='face',
             width=512,
-            dpr='auto'
+            dpr='auto',
+            secure=True,
         )
         data.href = (''.join([n[0] for n in data.first_name.split()]) + data.last_name.replace(' ', '')).lower() + '-' + str(data.id)
     return query
@@ -67,10 +68,9 @@ def members(request):
     return render(request, 'web/members.html.j2', context)
 
 
-def member(request, mem_href):
-    pk = mem_href.split('-')[-1]
-    data = getImageCloudUrl([Member.objects.get(pk=pk)])[0]
-    images = resources(prefix=f'{ASSET_DIR}/member/{mem_href}', type='upload', max_results=500)['resources']
+def member(request, slug):
+    data = getImageCloudUrl([Member.objects.get(slug=slug)])[0]
+    images = resources(prefix=f'{ASSET_DIR}/member/{data.href}', type='upload', max_results=500)['resources']
     images = [i['public_id'] for i in images][::-1]
     images = [CloudinaryImage(i).build_url(
         crop='scale',
