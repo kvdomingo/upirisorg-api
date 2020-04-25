@@ -26,4 +26,4 @@ $(document).on('load', function() {
     $grid.imagesLoaded().progress(function() {
         $grid.masonry();
     });
-})
+});

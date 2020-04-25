@@ -1,5 +1,4 @@
 import os
-from upirisorg import settings
 from cloudinary import CloudinaryImage
 from cloudinary.api import resources
 from django.shortcuts import render
