@@ -3,19 +3,19 @@ html {
     scroll-behavior: smooth;
 }
 
-@include media-breakpoint-up(sm) {
+@media (max-width: 576px) {
     html {
         font-size: 1.2rem;
     }
 }
 
-@include media-breakpoint-up(md) {
+@media (max-width: 768px) {
     html {
         font-size: 1.4rem;
     }
 }
 
-@include media-breakpoint-up(lg) {
+@media (max-width: 992px) {
     html {
         font-size: 1.6rem;
     }
