@@ -149,6 +149,10 @@ cloudinary.config(
 
 STATIC_URL = '/static/'
 
-if bool(int(os.environ['ON_HEROKU'])):
+ON_CI = bool(int(os.environ['ON_CI']))
+
+ON_HEROKU = bool(int(os.environ['ON_HEROKU']))
+
+if ON_HEROKU:
     import django_heroku
     django_heroku.settings(locals())
