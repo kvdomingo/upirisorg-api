@@ -36,12 +36,15 @@ class WebTestCase(StaticLiveServerTestCase):
 
     def test_alumni_view(self):
         self.selenium.get(f'{self.live_server_url}/alumni')
+        self.selenium.implicitly_wait(1.5)
         percySnapshot(browser=self.selenium, name='alumni', widths=PERCY_BS_WIDTHS)
 
     def test_gallery_view(self):
         self.selenium.get(f'{self.live_server_url}/gallery')
+        self.selenium.implicitly_wait(1.5)
         percySnapshot(browser=self.selenium, name='gallery', widths=PERCY_BS_WIDTHS)
 
     def test_contact_view(self):
         self.selenium.get(f'{self.live_server_url}/contact')
+        self.selenium.implicitly_wait(1.5)
         percySnapshot(browser=self.selenium, name='contact', widths=PERCY_BS_WIDTHS)

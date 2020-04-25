@@ -20,7 +20,7 @@ def main():
     ) as f:
         data = json.load(f)
     for d in data:
-        obj, created = Member.objects.update_or_create(id=data[d]['pk'], **data[d]['fields'])
+        obj, created = Member.objects.update_or_create(id=data[d]['pk'], defaults=dict(**data[d]['fields']))
         status = 'Created' if created else 'Updated'
         print(f'{status} entry for {obj.first_name} {obj.last_name}')
 
