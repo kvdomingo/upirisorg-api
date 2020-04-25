@@ -20,7 +20,15 @@
 
     <title>{% block title %}{% endblock %} | UP Iris</title>
 
-    {% if not settings.DEBUG %}
+    {% if not (settings.DEBUG and settings.ON_HEROKU) %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162676656-4"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-162676656-4');
+        </script>
+
         <meta name="description" content="UP Iris is a university-wide photography organization based in the College of Fine Arts, University of the Philippines, Diliman." />
         <meta property="og:title" content="UP Iris" />
         <meta property="og:url" content="http://upiris.herokuapp.com" />
