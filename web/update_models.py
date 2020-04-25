@@ -19,6 +19,8 @@ def main():
         encoding='latin-1'
     ) as f:
         data = json.load(f)
+        if len(data) == 0:
+            return 0
     for d in data:
         obj, created = Member.objects.update_or_create(id=data[d]['pk'], defaults=dict(**data[d]['fields']))
         status = 'Created' if created else 'Updated'
