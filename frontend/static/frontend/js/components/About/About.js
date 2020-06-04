@@ -17,7 +17,7 @@ export default class About extends Component {
                 </Helmet>
                 <Card className='card-image cover-photo'>
                     <div className='text-white text-center rgba-stylish-strong py-5 px-4'>
-                        <Type tag='h1' className="card-title h2 my-4 py-2 text-uppercase">Members</Type>
+                        <Type tag='h1' className="card-title h2 my-4 py-2 text-uppercase">About</Type>
                     </div>
                 </Card>
 
