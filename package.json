@@ -8,7 +8,7 @@
         "build": "webpack --config webpack.prod.js",
         "watch": "webpack --config webpack.dev.js --watch",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "postinstall": "npm i"
+        "postinstall": "npm run build"
     },
     "repository": {
         "type": "git",
@@ -25,11 +25,14 @@
     },
     "homepage": "https://github.com/kvdomingo/upirisorg#readme",
     "dependencies": {
+        "@apollo/react-hooks": "^3.1.5",
         "@fortawesome/fontawesome-free": "^5.13.0",
         "aos": "^2.3.4",
+        "apollo-boost": "^0.4.9",
         "bootstrap-css-only": "^4.4.1",
         "cloudinary-react": "^1.5.0",
         "dateformat": "^3.0.3",
+        "graphql": "^15.0.0",
         "i": "^0.3.6",
         "masonry-layout": "^4.2.2",
         "mdbreact": "^4.26.0",

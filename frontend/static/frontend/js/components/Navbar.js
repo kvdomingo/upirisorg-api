@@ -19,12 +19,20 @@ class NavBar extends Component {
             isOpen: false,
             navAlpha: 0,
             navDark: true,
+            navFixed: 'fixed-top',
             navLogo: '-white',
         };
     }
 
     componentDidMount() {
+        this.navHandler();
         document.addEventListener('scroll', this.navHandler);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.pathname !== this.props.location.pathname) {
+            this.navHandler();
+        }
     }
 
     componentWillUnmount() {
@@ -32,17 +40,28 @@ class NavBar extends Component {
     }
 
     navHandler = () => {
-        if (window.scrollY > 30) {
+        if (this.props.location.pathname === '/') {
+            if (window.scrollY > 30) {
+                this.setState({
+                    navAlpha: 1,
+                    navDark: false,
+                    navFixed: 'fixed-top',
+                    navLogo: '',
+                });
+            } else {
+                this.setState({
+                    navAlpha: 0,
+                    navDark: true,
+                    navFixed: 'fixed-top',
+                    navLogo: '-white',
+                });
+            }
+        } else {
             this.setState({
                 navAlpha: 1,
                 navDark: false,
+                navFixed: '',
                 navLogo: '',
-            });
-        } else {
-            this.setState({
-                navAlpha: 0,
-                navDark: true,
-                navLogo: '-white',
             });
         }
     }
@@ -57,7 +76,7 @@ class NavBar extends Component {
                 light={!this.state.navDark}
                 dark={this.state.navDark}
                 expand='md'
-                className='kill-shadow fixed-top'
+                className={`kill-shadow ${this.state.navFixed}`}
                 style={{
                     background: `rgba(255, 255, 255, ${this.state.navAlpha})`,
                     transition: 'background 300ms linear',
@@ -100,6 +119,5 @@ class NavBar extends Component {
         );
     }
 }
-
 
 export default withRouter(NavBar);

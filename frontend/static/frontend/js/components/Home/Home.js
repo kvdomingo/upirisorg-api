@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {
     MDBCard as Card,
-    MDBBtn as Button,
 } from 'mdbreact';
 import { LoremIpsum as Lipsum } from 'react-lorem-ipsum';
+import { Link } from 'react-router-dom';
 
 
 export default class Home extends Component {
@@ -18,9 +18,9 @@ export default class Home extends Component {
                     <div className='py-5 pt-5 mt-5'>
                         <h2 className="card-title h2 my-4 py-2"><Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} /></h2>
                         <div className="container">
-                            <p className="mb-4 pb-2 px-md-5 mx-md-5"><Lipsum p={1} /></p>
+                            <div className="mb-4 pb-2 px-md-5 mx-md-5"><Lipsum p={1} /></div>
                         </div>
-                        <Button className="peach-gradient"><i className="fas fa-clone left"></i>&nbsp; View gallery</Button>
+                        <Link to='/gallery' className="btn peach-gradient"><i className="fas fa-clone left"></i>&nbsp; View gallery</Link>
                     </div>
                 </div>
             </Card>
