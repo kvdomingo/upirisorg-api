@@ -9,19 +9,25 @@ import {
     MDBContainer as Container,
     MDBIcon as Icon,
 } from 'mdbreact';
-import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { withRouter } from 'react-router-dom';
 import { Image } from 'cloudinary-react';
+import Masonry from 'masonry-layout/masonry';
+import imagesLoaded from 'imagesloaded/imagesloaded';
+import { SRLWrapper } from 'simple-react-lightbox';
 import Loading from '../Loading';
+import './Member.css';
 
 
 const client = new ApolloClient({
     uri: `${window.location.origin}/api/`,
 });
 
-export default class Home extends Component {
+class Member extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            images: [],
             loading: true,
         };
     }
@@ -57,8 +63,35 @@ export default class Home extends Component {
                 `
             })
             .then(res => {
-                console.log(res);
                 this.setState({ ...res });
+            });
+
+        this.handlePhotos();
+    }
+
+    handlePhotos = () => {
+        let { memberSlug } = this.props.match.params;
+        fetch(`/api/member/${memberSlug}`)
+            .then(res => res.json())
+            .then(images => {
+                this.setState({ images: images.data });
+                const grid = document.querySelector('.grid');
+                const msnry = new Masonry(grid, {
+                    itemSelector: '.grid-item',
+                    columnWidth: '.grid-sizer',
+                    percentPosition: true,
+                });
+                const imgLoad = new imagesLoaded(grid);
+                imgLoad.on('progress', () => {
+                    msnry.layout();
+                    this.setState({ isLoaded: true });
+                });
+                imgLoad.on('done', () => {
+                    msnry.layout();
+                });
+                imgLoad.on('always', () => {
+                    msnry.layout();
+                });
             });
     }
 
@@ -66,16 +99,21 @@ export default class Home extends Component {
         if (this.state.loading) return <Loading />
         else return (
             <Container fluid>
+                <Helmet>
+                    <title>{this.state.data.member.firstName} {this.state.data.member.lastName} | Members | UP Iris</title>
+                </Helmet>
                 <Row>
                     <Col md='3'>
-                        <Link href='/members' className='btn indigo text-light btn-sm'>
+                        <a href='/members' className='btn indigo text-light btn-sm'>
                             <i className='material-icons left'>keyboard_arrow_left</i>
-                        </Link>
-                        <div className='my-4 d-flex align-items-stretch'>
-                            <Card style={{
-                                    position: 'sticky',
-                                    top: 20,
-                                }}>
+                        </a>
+                        <div
+                            className='my-4 d-flex align-items-stretch'
+                            style={{
+                                position: 'sticky',
+                                top: '20px',
+                            }}>
+                            <Card>
                                 <div className='view overlay'>
                                     <Image
                                         cloudName='kdphotography-assets'
@@ -147,12 +185,32 @@ export default class Home extends Component {
                         </div>
                     </Col>
                     <Col md='9' className='pl-md-5 mb-5'>
-                        <div className='text-center'>
-                            <Type tag='h2' variant='display-5'>No photos uploaded yet.</Type>
-                        </div>
+                        <SRLWrapper>
+                            <div className='grid text-center'>
+                                <div className='grid-sizer' />
+                                {this.state.images.map((pid, i) => (
+                                    <div className='grid-item px-1 py-0 mx-0' key={i}>
+                                        <Image
+                                            cloudName='kdphotography-assets'
+                                            className='img-fluid mb-2'
+                                            publicId={pid}
+                                            secure
+                                            responsive
+                                            responsiveUseBreakpoints
+                                            width='auto'
+                                            dpr='auto'
+                                            crop='scale'
+                                            />
+                                    </div>
+                                ))}
+                            </div>
+                        </SRLWrapper>
                     </Col>
                 </Row>
             </Container>
         );
     }
 }
+
+
+export default withRouter(Member);

@@ -17,34 +17,33 @@ These instructions will get you a copy of the project up and running on your loc
 - [Python](https://python.org/downloads) 3.6.8 or above
 - [Node.js](https://nodejs.org/en/) 10 or above
 - [Git](https://git-scm.com/)
-- [`requirements.txt`](./requirements.txt)
 
 ### Installing
 A step by step series of examples that tell you how to get a development env running
 
 1. Install Git, Python, and Node.js (links above).
 
-1. Install and update Python package manager (`pip`) and virtualenv.
+2. Install and update Python package manager (`pip`) and virtualenv.
 ```shell
 > python -m pip install -U pip virtualenv
 ```
 
-1. Clone and extract repository to your machine
+3. Clone and extract repository to your machine
 ```shell
 > git clone https://github.com/kvdomingo/upirisorg.git
 ```
 
-1. Checkout a new `develop` branch. **DO NOT** make any modifications directly in the `master` branch. Similarly, **DO NOT** push directly to the `master` branch.
+4. Checkout a new `develop` branch. **DO NOT** make any modifications directly in the `master` branch. Similarly, **DO NOT** push directly to the `master` branch.
 ```shell
 > git checkout -b develop
 ```
 
-1. `cd` to repo folder and create a new virtualenv
+5. `cd` to repo folder and create a new virtualenv
 ```shell
 > python -m venv env
 ```
 
-1. Activate virtualenv
+6. Activate virtualenv
 ```shell
 # Linux/macOS
 > source env/bin/activate
@@ -52,20 +51,21 @@ A step by step series of examples that tell you how to get a development env run
 > .\env\scripts\activate
 ```
 
-1. Install remaining prerequisites
+7. Install remaining prerequisites
 ```shell
 > pip install -r requirements.txt
-```
-
-1. Setup JSX preprocessor
-```shell
-> npm init -y
-> npm install babel-cli@6 babel-preset-react-app@3
+> npm i
 ```
 
 ### Deploying locally
+1. Open a terminal and run
 ```shell
 > python manage.py runserver
+```
+
+2. Open another terminal and run
+```shell
+> npm run watch
 ```
 
 Access the local server at `http://localhost:8000`.

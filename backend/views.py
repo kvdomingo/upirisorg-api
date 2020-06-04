@@ -2,9 +2,16 @@ import os
 from cloudinary import CloudinaryImage
 from cloudinary.api import resources
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from .models import *
+
+
+def api_member(request, slug):
+    data = getImageCloudUrl([Member.objects.get(slug=slug)])[0]
+    images = resources(prefix=f'{ASSET_DIR}/member/{data.href}', type='upload', max_results=500)['resources']
+    images = [i['public_id'] for i in images][::-1]
+    return JsonResponse(dict(data=images))
 
 
 ASSET_DIR = settings.ASSET_DIR

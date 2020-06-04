@@ -8,6 +8,7 @@ import {
     MDBCardBody as CardBody,
     MDBContainer as Container,
 } from 'mdbreact';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Image } from 'cloudinary-react';
 import Loading from '../Loading';
@@ -17,7 +18,7 @@ const client = new ApolloClient({
     uri: `${window.location.origin}/api/`,
 });
 
-export default class Home extends Component {
+export default class Members extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -87,6 +88,9 @@ export default class Home extends Component {
         if (this.state.loading) return <Loading />
         else return (
             <div>
+                <Helmet>
+                    <title>Members | UP Iris</title>
+                </Helmet>
                 <Card className='card-image cover-photo'>
                     <div className='text-white text-center rgba-stylish-strong py-5 px-4'>
                         <Type tag='h1' className="card-title h2 my-4 py-2 text-uppercase">Members</Type>
@@ -113,7 +117,7 @@ export default class Home extends Component {
                                             crop='fill'
                                             gravity='face'
                                             />
-                                        <Link to={`/member/${this.state.data[ec].slug}`}>
+                                        <Link to={`/members/${this.state.data[ec].slug}`}>
                                             <div className='mask rgba-white-slight' />
                                         </Link>
                                     </div>
@@ -157,7 +161,7 @@ export default class Home extends Component {
                                                     crop='fill'
                                                     gravity='face'
                                                     />
-                                                <Link to={`/member/${this.state.data[comm][i].slug}`}>
+                                                <Link to={`/members/${this.state.data[comm][i].slug}`}>
                                                     <div className='mask rgba-white-slight' />
                                                 </Link>
                                             </div>
