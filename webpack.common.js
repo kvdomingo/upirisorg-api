@@ -69,7 +69,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "frontend/jinja2/frontend/index.html.j2"),
-            filename: "index.html"
+            filename: "index.html",
+            minify: false
         })
     ]
 };
