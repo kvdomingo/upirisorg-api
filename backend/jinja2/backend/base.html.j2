@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.8.1/cloudinary-core.min.js" type="text/javascript"></script>
+
+    <title>{% block title %}{% endblock %} | UP Iris</title>
+
+    {% if not (settings.DEBUG and settings.ON_HEROKU) %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162676656-4"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-162676656-4');
+        </script>
+
+        <meta name="description" content="UP Iris is a university-wide photography organization based in the College of Fine Arts, University of the Philippines, Diliman." />
+        <meta property="og:title" content="UP Iris" />
+        <meta property="og:url" content="http://upiris.herokuapp.com" />
+        <meta name="og:description" content="UP Iris is a university-wide photography organization based in the College of Fine Arts, University of the Philippines, Diliman." />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content="{{ graph_image }}" />
+        <meta property="og:site_name" content="UP Iris"
+        <meta name="twitter:title" content="UP Iris" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:image" content="{{ graph_image }}" />
+        <meta name="twitter:image:alt" content="UP Iris" />
+        <meta name="twitter:description" content="UP Iris is a university-wide photography organization based in the College of Fine Arts, University of the Philippines, Diliman." />
+        <meta name="twitter:site" content="@upirisofficial" />
+        <meta property="fb:app_id" content="upiris" />
+    {% endif %}
+
+    <style>
+        @font-face {
+            font-family: 'Futura Book';
+            src: local('Futura Bk BT'), url("{{ static('backend/fonts/Futura Book.ttf') }}") format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Futura Book Italic';
+            src: local('Futura Bk BT'), url("{{ static('backend/fonts/Futura Book Italic.ttf') }}") format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Futura Light';
+            src: local('Futura Lt BT'), url("{{ static('backend/fonts/Futura Light.ttf') }}") format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Futura Light Italic';
+            src: local('Futura Lt BT'), url("{{ static('backend/fonts/Futura Light Italic.ttf') }}") format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Futura Medium';
+            src: local('Futura Hv BT'), url("{{ static('backend/fonts/Futura Medium.ttf') }}") format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Futura Medium Italic';
+            src: local('Futura Hv BT'), url("{{ static('backend/fonts/Futura Medium Italic.ttf') }}") format('truetype');
+        }
+    </style>
+    <link rel="stylesheet" href="{{ static('backend/css/base.css') }}" />
+    <script src="{{ static('backend/js/base.js') }}"></script>
+
+    <link rel="shortcut icon" type="image/png" href="{{ favicon }}" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="box-shadow: none; z-index: 1;">
+        <a class="navbar-brand cl" href="{{ url('home') }}">
+            <img src="{{ nav_logo }}" width="100" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false", aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                {% for item in nav_items %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url(item.lower()) }}">{{ item.upper() }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+
+    <footer class="page-footer font-small blue darken-4 pt-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-8 mt-md-0 mt-3">
+                    <h2 class="h2 h2-responsive text-uppercase">UP Iris Photography</h2>
+                    <h5>#BeIRISistible</h5>
+                    <p>Made by <a href="https://kdphotography.herokuapp.com" target="_blank">Kenneth V Domingo</a></p>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3" />
+                <div class="col mb-md-0 mb-3">
+                    <h5 class="text-uppercase">About</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Our Vision</a></li>
+                        <li><a href="#">Our Principles</a></li>
+                        <li><a href="#">Our Objectives</a></li>
+                    </ul>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3" />
+                <div class="col mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="https://www.facebook.com/upiris" target="_blank"><i class="fab fa-facebook-square"></i> /upiris</a>
+                        </li>
+                        <li>
+                            <a href="https://www.twitter.com/upirisofficial" target="_blank"><i class="fab fa-twitter"></i> @upirisofficial</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/upirisofficial" target="_blank"><i class="fab fa-instagram"></i> @upirisofficial</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3">
+            <p class="text-uppercase my-0">
+                &copy; {{ now.year }} UP Iris
+            </p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        cl.responsive()
+    });
+    </script>
+</body>
+</html>

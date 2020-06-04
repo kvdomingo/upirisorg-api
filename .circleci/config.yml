@@ -19,6 +19,9 @@ jobs:
             - browser-tools/install-firefox
             - browser-tools/install-geckodriver
             - run:
+                command: npm i
+                name: Install Node.js dependencies
+            - run:
                 command: sudo apt-get install libasound2
                 name: Fix chromium build issue
             - run:

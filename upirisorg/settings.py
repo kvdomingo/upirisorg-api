@@ -34,21 +34,25 @@ DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'iriswebdev.herokuapp.com',
-    'upiris.herokuapp.com',
+    '127.0.0.1',
+    '.herokuapp.com',
+    'testserver',
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'web.apps.WebConfig',
+    'backend.apps.BackendConfig',
+    'frontend.apps.FrontendConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +106,10 @@ DATABASES = {
     }
 }
 
+GRAPHENE = {
+    'SCHEMA': 'upirisorg.schema.schema',
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -147,7 +155,16 @@ cloudinary.config(
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': False,
+        'BUNDLE_DIR_NAME': 'frontend/bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 ON_CI = bool(int(os.environ['ON_CI']))
 
