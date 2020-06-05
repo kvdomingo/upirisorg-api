@@ -1,0 +1,30 @@
+{% extends 'backend/base.html.j2' %}
+
+{% block title %}
+    Members
+{% endblock %}
+
+{% block body %}
+
+<script src="{{ static('backend/js/about.js') }}"></script>
+
+<div class="card card-image">
+    <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+        <div class="py-5">
+            <h1 class="card-title h1 h1-responsive my-4 py-2 text-uppercase">About</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <hr class="clearfix w-100 my-5" />
+</div>
+
+<div class="container my-5">
+    <p>
+        <b>UP Iris</b> is a university-wide photography organization based in the College of Fine Arts, University of the Philippines, Diliman, founded in November 20, 1998. We are a group of passionate and committed students from all over UP Diliman who share a love of photography. Through our knowledge, integrity, and sheer creative ability as an organization, we  aim to be the authority on photography in the university.
+    </p>
+    {{ lipsum(5, True, 100, 150) }}
+</div>
+
+{% endblock %}
