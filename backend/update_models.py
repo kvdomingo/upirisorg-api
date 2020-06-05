@@ -22,9 +22,12 @@ def main():
         if len(data) == 0:
             return 0
     for d in data:
-        obj, created = Member.objects.update_or_create(id=data[d]['pk'], defaults=dict(**data[d]['fields']))
-        status = 'Created' if created else 'Updated'
-        print(f'{status} entry for {obj.first_name} {obj.last_name}')
+        try:
+            obj, created = Member.objects.update_or_create(id=data[d]['pk'], defaults=dict(**data[d]['fields']))
+            status = 'Created' if created else 'Updated'
+            print(f'{status} entry for {obj.first_name} {obj.last_name}')
+        except:
+            pass
 
 
 if __name__ == '__main__':
