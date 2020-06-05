@@ -6,6 +6,7 @@ const Home = lazy(() => import('./Home/Home'));
 const About = lazy(() => import('./About/About'));
 const Members = lazy(() => import('./Members/Members'));
 const Member = lazy(() => import('./Members/Member'));
+const Contact = lazy(() => import('./Contact/Contact'));
 const Construction = lazy(() => import('./Construction'));
 
 
@@ -17,7 +18,7 @@ export default (
         <Route path='/members/:memberSlug' component={Member} />
         <Route exact path='/alumni' component={Construction} />
         <Route exact path='/gallery' component={Construction} />
-        <Route exact path='/contact' component={Construction} />
+        <Route exact path='/contact' component={Contact} />
         <Route component={Err404} status={404} />
     </Switch>
 );
