@@ -9,7 +9,7 @@ class MemberAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['first_name', 'last_name']}
 
     def view_on_site(self, obj):
-        return reverse('member', args=(obj.slug,))
+        return f'/members/{obj.slug}'
 
 
 admin.site.index_title = 'Admin'
