@@ -29,7 +29,7 @@ export default class About extends Component {
                     <p>
                         <b>UP Iris</b> is a university-wide photography organization based in the College of Fine Arts, University of the Philippines, Diliman, founded in November 20, 1998. We are a group of passionate and committed students from all over UP Diliman who share a love of photography. Through our knowledge, integrity, and sheer creative ability as an organization, we  aim to be the authority on photography in the university.
                     </p>
-                    <Lipsum p={5} avgWordsPerSentence={15} avgSentencesPerParagraph={10} />
+                    <Lipsum p={5} avgWordsPerSentence={15} avgSentencesPerParagraph={10} startWithLoremIpsum={false} />
                 </Container>
             </div>
         );

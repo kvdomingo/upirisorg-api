@@ -12,7 +12,15 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { Image } from 'cloudinary-react';
 import Loading from '../Loading';
+import './Member.css';
 
+
+const styles = {
+    killShadow: {
+        boxShadow: 'none',
+        border: '1px solid #ddd',
+    },
+};
 
 const client = new ApolloClient({
     uri: `${window.location.origin}/api/`,
@@ -102,7 +110,7 @@ export default class Members extends Component {
                     <Row className='row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 '>
                         {ecOrder.map((ec, i) => (
                             <Col key={this.state.data[ec].id} className='mb-4 d-flex align-items-stretch'>
-                                <Card>
+                                <Card style={styles.killShadow}>
                                     <div className='view overlay'>
                                         <Image
                                             className='card-img-top'
@@ -146,7 +154,7 @@ export default class Members extends Component {
                             <Row className='row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 '>
                                 {this.state.data[comm].map((mem, i) => (
                                     <Col key={this.state.data[comm][i].id} className='mb-4 d-flex align-items-stretch'>
-                                        <Card>
+                                        <Card style={styles.killShadow}>
                                             <div className='view overlay'>
                                                 <Image
                                                     className='card-img-top'

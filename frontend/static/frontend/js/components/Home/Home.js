@@ -28,9 +28,9 @@ export default class Home extends Component {
                     }}>
                     <div className='text-white text-center rgba-stylish-strong py-5 px-4 pt-5'>
                         <div className='py-5 pt-5 mt-5'>
-                            <h2 className="card-title h2 my-4 py-2"><Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} /></h2>
+                            <h2 className="card-title h2 my-4 py-2"><Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} startWithLoremIpsum={false} /></h2>
                             <div className="container">
-                                <div className="mb-4 pb-2 px-md-5 mx-md-5"><Lipsum p={1} /></div>
+                                <div className="mb-4 pb-2 px-md-5 mx-md-5"><Lipsum p={1} startWithLoremIpsum={false} /></div>
                             </div>
                             <Link to='/gallery' className="btn deep-orange">
                                 <Icon fas icon='clone' className="left" />&nbsp; View gallery
@@ -42,13 +42,13 @@ export default class Home extends Component {
                 <Container fluid className='p-5'>
                     <Row>
                         <Col className='ml-md-5'>
-                            <Type tag='h2' variant='h1-responsive'><Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} /></Type>
+                            <Type tag='h2' variant='h1-responsive'><Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} startWithLoremIpsum={false} /></Type>
                             <Button color='deep-orange' className='ml-0 my-4'>
                                 <Icon fas icon='clone' className="left" />&nbsp; View gallery
                             </Button>
                         </Col>
                         <Col className='mr-md-5'>
-                            <Lipsum p={1} />
+                            <Lipsum p={1} startWithLoremIpsum={false} />
                         </Col>
                     </Row>
                 </Container>
@@ -72,9 +72,9 @@ export default class Home extends Component {
                         </Col>
                         <Col className="mr-md-5">
                             <Type tag='h2' variant='h1-responsive'>
-                                <Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} />
+                                <Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} startWithLoremIpsum={false} />
                             </Type>
-                            <p className="mt-5"><Lipsum p={1} /></p>
+                            <p className="mt-5"><Lipsum p={1} startWithLoremIpsum={false} /></p>
                             <Button color='deep-orange' className='ml-0 my-4'>
                                 <Icon fas icon='clone' className="left" />&nbsp; View gallery
                             </Button>
@@ -83,9 +83,9 @@ export default class Home extends Component {
                     <Row>
                         <Col className="ml-md-5">
                             <Type tag='h2' variant='h1-responsive'>
-                                <Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} />
+                                <Lipsum p={1} avgWordsPerSentence={4} avgSentencesPerParagraph={1} startWithLoremIpsum={false} />
                             </Type>
-                            <p className="mt-5"><Lipsum p={1} /></p>
+                            <p className="mt-5"><Lipsum p={1} startWithLoremIpsum={false} /></p>
                             <Button color='deep-orange' className='ml-0 my-4'>
                                 <Icon fas icon='clone' className="left" />&nbsp; View gallery
                             </Button>
@@ -111,7 +111,7 @@ export default class Home extends Component {
                 <Container fluid className="p-5">
                     <blockquote className="blockquote">
                         <Type tag='h2' variant="h2-responsive" className="mb-0 mr-md-5 pr-md-5">
-                            <Lipsum p={1} />
+                            <Lipsum p={1} startWithLoremIpsum={false} />
                         </Type>
                         <footer className="blockquote-footer mb-3">
                             Some wise guy, <cite>Some New York Times bestseller</cite>

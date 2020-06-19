@@ -7,6 +7,7 @@ import {
     MDBTypography as Type,
     MDBIcon as Icon,
 } from 'mdbreact';
+import { Link } from 'react-router-dom';
 
 
 export default class PageFooter extends React.Component {
@@ -24,10 +25,10 @@ export default class PageFooter extends React.Component {
                         <Col className="mb-md-0 mb-3">
                             <Type tag='h5' className="text-uppercase">About</Type>
                             <ul className="list-unstyled">
-                                <li><a href="#!">Our Mission</a></li>
-                                <li><a href="#!">Our Vision</a></li>
-                                <li><a href="#!">Our Principles</a></li>
-                                <li><a href="#!">Our Objectives</a></li>
+                                <li><Link to="/about">Our Mission</Link></li>
+                                <li><Link to="/about">Our Vision</Link></li>
+                                <li><Link to="/about">Our Principles</Link></li>
+                                <li><Link to="/about">Our Objectives</Link></li>
                             </ul>
                         </Col>
                         <hr className="clearfix w-100 d-md-none pb-3" />
