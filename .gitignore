@@ -242,3 +242,6 @@ content/
 # Webpack build files
 frontend/static/frontend/bundles
 webpack-stats.json
+
+# IDE
+.idea/

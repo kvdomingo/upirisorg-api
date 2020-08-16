@@ -14,8 +14,8 @@
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
-- [Python](https://python.org/downloads) 3.6.8 or above
-- [Node.js](https://nodejs.org/en/) 10 or above
+- [Python](https://python.org/downloads) 3.7.8 or above
+- [Node.js](https://nodejs.org/en/) LTS 10 or above
 - [Git](https://git-scm.com/)
 
 ### Installing
@@ -23,9 +23,9 @@ A step by step series of examples that tell you how to get a development env run
 
 1. Install Git, Python, and Node.js (links above).
 
-2. Install and update Python package manager (`pip`) and virtualenv.
+2. Install and update Python package manager (`pipenv`).
 ```shell
-> python -m pip install -U pip virtualenv
+> python -m pip install -U pipenv
 ```
 
 3. Clone and extract repository to your machine
@@ -38,29 +38,16 @@ A step by step series of examples that tell you how to get a development env run
 > git checkout -b develop
 ```
 
-5. `cd` to repo folder and create a new virtualenv
+5. Install remaining prerequisites
 ```shell
-> python -m venv env
-```
-
-6. Activate virtualenv
-```shell
-# Linux/macOS
-> source env/bin/activate
-# Windows
-> .\env\scripts\activate
-```
-
-7. Install remaining prerequisites
-```shell
-> pip install -r requirements.txt
+> pipenv install --dev
 > npm i
 ```
 
 ### Deploying locally
 1. Open a terminal and run
 ```shell
-> python manage.py runserver
+> pipenv run python manage.py runserver
 ```
 
 2. Open another terminal and run
@@ -72,7 +59,7 @@ Access the local server at `http://localhost:8000`.
 
 ### Running the tests
 ```shell
-> python manage.py test
+> pipenv run python manage.py test
 ```
 
 ## Deployment
