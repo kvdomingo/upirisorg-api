@@ -30,7 +30,7 @@
         "aos": "^2.3.4",
         "apollo-boost": "^0.4.9",
         "bootstrap-css-only": "^4.4.1",
-        "cloudinary-react": "^1.5.0",
+        "cloudinary-react": "^1.6.6",
         "dateformat": "^3.0.3",
         "graphql": "^15.0.0",
         "i": "^0.3.6",
