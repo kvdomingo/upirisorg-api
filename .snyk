@@ -1,0 +1,60 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.19.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - '@babel/register > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - eslint > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - eslint-plugin-flowtype > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - html-webpack-plugin > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - node-sass > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - webpack-bundle-analyzer > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - webpack-merge > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@babel/preset-env > @babel/plugin-transform-block-scoping > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - babel-eslint > @babel/traverse > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - brotli-webpack-plugin > async > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - eslint > inquirer > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - eslint > table > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - node-sass > sass-graph > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - webpack-dev-server > http-proxy-middleware > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - babel-eslint > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - webpack-dev-server > portfinder > async > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - node-sass > gaze > globule > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@svgr/webpack > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - babel-eslint > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@svgr/webpack > @babel/preset-env > @babel/plugin-transform-unicode-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - babel-eslint > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@svgr/webpack > @babel/preset-env > @babel/preset-modules > @babel/plugin-transform-dotall-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@svgr/webpack > @svgr/core > @svgr/plugin-jsx > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@svgr/webpack > @svgr/core > @svgr/plugin-jsx > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/generator > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@svgr/webpack > @svgr/core > @svgr/plugin-jsx > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
+    - '@svgr/webpack > @svgr/core > @svgr/plugin-jsx > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash':
+        patched: '2020-09-29T00:05:02.099Z'
