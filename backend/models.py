@@ -36,7 +36,7 @@ class Member(models.Model):
             ('UPOU', 'UP Open University'),
             ('O', 'Other'),
         ],
-        max_length = 8
+        max_length=8
     )
     year = models.SmallIntegerField(blank=True, null=True)
     course = models.CharField(max_length=255, blank=True)
@@ -46,7 +46,7 @@ class Member(models.Model):
     twitter = models.CharField(max_length=64, blank=True, verbose_name='Twitter username (without @)')
     instagram = models.CharField(max_length=64, blank=True, verbose_name='Instagram username (without @)')
     website = models.CharField(max_length=256, blank=True)
-    picture_url = models.URLField(blank=True)
+    picture_url = models.CharField(max_length=255)
     committee = models.CharField(
         max_length = 1,
         choices = [
