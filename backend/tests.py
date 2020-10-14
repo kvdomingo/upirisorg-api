@@ -1,13 +1,12 @@
 from django.conf import settings
-from django.test import TestCase, LiveServerTestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.support.ui import Select
 from percy import percySnapshot
 
 
 PERCY_BS_WIDTHS = [576, 768, 992, 1200]
+
 
 class WebTestCase(StaticLiveServerTestCase):
     @classmethod

@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'Futura Book';
+  src: local('Futura Bk BT'), url("fonts/Futura Book.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura Book Italic';
+  src: local('Futura Bk BT'), url("fonts/Futura Book Italic.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura Light';
+  src: local('Futura Lt BT'), url("fonts/Futura Light.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura Light Italic';
+  src: local('Futura Lt BT'), url("fonts/Futura Light Italic.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura Medium';
+  src: local('Futura Hv BT'), url("fonts/Futura Medium.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura Medium Italic';
+  src: local('Futura Hv BT'), url("fonts/Futura Medium Italic.ttf") format('truetype');
+}
+
+html {
+  font-family: 'Futura Book', sans-serif;
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 1.1rem;
+  }
+}
+
+body {
+  font-family: 'Futura Book', sans-serif;
+}
+
+b {
+  font-family: 'Futura Medium', sans-serif;
+}
+
+i {
+  font-family: 'Futura Book Italic', sans-serif;
+}
+
+b i, i b {
+  font-family: 'Futura Medium Italic', sans-serif;
+}
+
+.cover-photo {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: none;
+}
+
+.kill-shadow {
+  box-shadow: none;
+}
