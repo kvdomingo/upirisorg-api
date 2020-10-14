@@ -58,3 +58,5 @@ patch:
         patched: '2020-09-29T00:05:02.099Z'
     - '@svgr/webpack > @svgr/core > @svgr/plugin-jsx > @babel/core > @babel/helper-module-transforms > @babel/helper-replace-supers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash':
         patched: '2020-09-29T00:05:02.099Z'
+    - snyk > snyk-docker-plugin > @snyk/dep-graph > graphlib > lodash:
+        patched: '2020-10-14T12:57:36.067Z'
