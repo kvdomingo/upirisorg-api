@@ -14,6 +14,7 @@ class Query:
         id=graphene.Int(),
         slug=graphene.String(),
         last_name=graphene.String(),
+        executive_committee_position=graphene.String(),
     )
     committee_members = graphene.List(
         MemberType,
@@ -32,6 +33,7 @@ class Query:
         slug = kwargs.get('slug')
         last_name = kwargs.get('last_name')
         committee = kwargs.get('committee')
+        executive_committee_position = kwargs.get('executive_committee_position')
 
         if id is not None:
             return Member.objects.get(pk=id)
@@ -44,3 +46,6 @@ class Query:
 
         if committee is not None:
             return Member.objects.filter(committee=committee)
+
+        if executive_committee_position is not None:
+            return Member.objects.get(executive_committee_position=executive_committee_position)

@@ -53,25 +53,25 @@ export default class Members extends Component {
       .query({
         query: gql`
           {
-            president: member(id: 18) {
+            president: member(executiveCommitteePosition: "PRE") {
               ...membersPageDetails
             }
-            vpExte: member(id: 36) {
+            vpExte: member(executiveCommitteePosition: "VPE") {
               ...membersPageDetails
             }
-            vpInte: member(id: 35) {
+            vpInte: member(executiveCommitteePosition: "VPI") {
               ...membersPageDetails
             }
-            secgen: member(id: 15) {
+            secgen: member(executiveCommitteePosition: "SG") {
               ...membersPageDetails
             }
-            promos: member(id: 8) {
+            promos: member(executiveCommitteePosition: "EOP") {
               ...membersPageDetails
             }
-            log: member(id: 5) {
+            log: member(executiveCommitteePosition: "EOL") {
               ...membersPageDetails
             }
-            fin: member(id: 27) {
+            fin: member(executiveCommitteePosition: "CE") {
               ...membersPageDetails
             }
             exteComm: committeeMembers(committee: "E") {
