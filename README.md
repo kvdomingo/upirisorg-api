@@ -60,11 +60,6 @@ Open a terminal and run
 
 Access the local server at `http://localhost:8000`.
 
-### Running the tests
-```shell
-> python manage.py test
-```
-
 ## Deployment
 ```shell
 > git add .
@@ -72,9 +67,6 @@ Access the local server at `http://localhost:8000`.
 > git push origin <GITHUB_BRANCH>
 ```
 where `GITHUB_BRANCH` should reflect the type of changes you are implementing (e.g., `feature/some-amazing-new-feature`, `bugfix/crush-critical-bug`).
-
-## CI/CD
-- Check the status of the build at [Actions](https://github.com/kvdomingo/upirisorg/actions)
 
 ## Contributing
 Email us at [upirisorg@gmail.com](mailto:upirisorg.gmail.com).
