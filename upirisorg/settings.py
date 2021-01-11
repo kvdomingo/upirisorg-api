@@ -14,48 +14,53 @@ import os
 import jinja2
 import cloudinary
 from dotenv import load_dotenv
+from pathlib import Path
 
 load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-ASSET_DIR = os.environ['CLOUDINARY_ASSET_LOCATION']
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+ASSET_DIR = os.environ.get('CLOUDINARY_ASSET_LOCATION')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(os.environ['DEBUG']))
-DEBUG_PROPAGATE_EXCEPTIONS = True
+DEBUG = bool(int(os.environ.get('DEBUG')))
+
+DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
     '.herokuapp.com',
-    'testserver',
 ]
+
+if DEBUG:
+    ALLOWED_HOSTS.extend([
+        'localhost',
+        '127.0.0.1',
+    ])
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'backend.apps.BackendConfig',
-    'frontend.apps.FrontendConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'graphene_django',
-    'webpack_loader',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,12 +70,24 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
+    'https://upiris.vercel.app',
+]
+
+if DEBUG:
+    CORS_ORIGIN_WHITELIST.extend([
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+    ])
+
 ROOT_URLCONF = 'upirisorg.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'DIRS': [f'{PROJECT_DIR}/jinjatemplates/'],
+        'DIRS': [BASE_DIR / 'jinjatemplates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'environment': 'upirisorg.jinja2.environment',
@@ -102,7 +119,7 @@ WSGI_APPLICATION = 'upirisorg.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -145,31 +162,21 @@ USE_TZ = True
 
 
 # Cloudinary settings
+
 cloudinary.config(
-    cloud_name=os.environ['CLOUDINARY_CLOUD_NAME'],
-    api_key=os.environ['CLOUDINARY_API_KEY'],
-    api_secret=os.environ['CLOUDINARY_API_SECRET']
+    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
 )
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': False,
-        'BUNDLE_DIR_NAME': 'frontend/bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-    }
-}
-
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-ON_CI = bool(int(os.environ['ON_CI']))
+PYTHON_ENV = os.environ.get('PYTHON_ENV')
 
-ON_HEROKU = bool(int(os.environ['ON_HEROKU']))
-
-if ON_HEROKU:
+if PYTHON_ENV != 'development':
     import django_heroku
     django_heroku.settings(locals())

@@ -3,7 +3,6 @@
 ![UP Iris](http://res.cloudinary.com/kdphotography-assets/image/upload/c_scale,w_256/v1/upirisorg/web/static/web/media/private/logo.png)
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django?style=flat-square)
-![node-current](https://img.shields.io/node/v/react?style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kvdomingo/upirisorg?style=flat-square)
 
 
@@ -12,17 +11,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 - [Python](https://python.org/downloads) 3.7
-- [Node.js](https://nodejs.org/en/) LTS 10 or above
 - [Git](https://git-scm.com/)
 
 ### Installing
 A step by step series of examples that tell you how to get a development env running
 
-1. Install Git, Python, and Node.js (links above).
+1. Install Git and Python (links above).
 
-2. Install and update Python package manager (`pipenv`).
+2. Install and update Python package manager and virtualenv (`pip`).
 ```shell
-> python -m pip install -U pipenv
+> python -m pip install -U pip virtualenv
 ```
 
 3. Clone and extract repository to your machine
@@ -35,28 +33,36 @@ A step by step series of examples that tell you how to get a development env run
 > git checkout -b develop
 ```
 
-5. Install remaining prerequisites
+5. Navigate to the extracted repository and create a virtual environment.
 ```shell
-> pipenv install --dev
-> npm i
+> python -m venv env
+```
+
+6. Activate the virtual environment
+```shell
+# Windows
+.\env\Scripts\activate
+
+# Linux/macOS
+source env/bin/activate
+```
+
+7. Install remaining prerequisites
+```shell
+> pip install -r requirements.txt
 ```
 
 ### Deploying locally
-1. Open a terminal and run
+Open a terminal and run
 ```shell
-> pipenv run python manage.py runserver
-```
-
-2. Open another terminal and run
-```shell
-> npm run watch
+> python manage.py runserver
 ```
 
 Access the local server at `http://localhost:8000`.
 
 ### Running the tests
 ```shell
-> pipenv run python manage.py test
+> python manage.py test
 ```
 
 ## Deployment

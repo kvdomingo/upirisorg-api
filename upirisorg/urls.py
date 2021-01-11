@@ -23,5 +23,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', csrf_exempt(GraphQLView.as_view(graphiql=settings.DEBUG))),
     path('api/', include('backend.urls')),
-    path('', include('frontend.urls')),
 ]
